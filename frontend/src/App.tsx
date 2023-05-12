@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./App.css";
 import Allroutes from "./routes/Allroutes";
 import Navbar from "./components/Navbar";
@@ -12,5 +11,4 @@ function App() {
     </h1>
   );
 }
-
 export default App;
