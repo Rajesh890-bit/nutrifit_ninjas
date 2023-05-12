@@ -1,21 +1,33 @@
 const express = require("express");
 const foodRouter = express.Router();
 const { FoodModel } = require("../models/food.model");
-const { UserModel } = require("../models/user.model");
 
 // GET REQUEST
 foodRouter.get("/", async (req, res) => {
   try {
-    const { calories, category } = req.query;
+    const {calories,category } = req.query;
     const query = {};
     if (calories) {
-      query.calories = calories;
+      query.calories = {$lte : calories};
     }
     if (category) {
       query.category = category;
     }
-    const food = await FoodModel.find();
+    const food = await FoodModel.find(query);
     res.status(200).send({ msg: "All Food Data!!", ok: true, food: food });
+  } catch (error) {
+    res.status(400).send({ error: error.message });
+  }
+});
+
+// SINGLE FOOD DATA
+foodRouter.get("/single_food/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const single_food = await FoodModel.find({ _id: id });
+    res
+      .status(200)
+      .send({ msg: "Single Food Data!", ok: true, single_food: single_food });
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
