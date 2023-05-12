@@ -1,6 +1,20 @@
 const express = require("express");
+const { connection } = require("./config/db");
+const { userRouter } = require('./routes/user.route');
+const cors = require('cors')
 const app = express();
+app.use(express.json());
+app.use(cors())
 
-app.listen(8000, () => {
-  console.log("Server is running on port 8000");
+app.use('/user',userRouter);
+
+app.listen(process.env.PORT, async () => {
+  try {
+    await connection;
+    console.log(`Server runnin on port ${process.env.PORT}`);
+    console.log("Connected to DB!!");
+  } catch (error) {
+    console.log("Connection Failed!!");
+    console.log(error);
+  }
 });
