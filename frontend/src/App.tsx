@@ -1,9 +1,24 @@
-import React from "react";
+import React from 'react';
+import Navbar from './components/Navbar';
+import AllRoutes from './routes/Allroutes';
+import logo from './logo/NutriFit_Ninjas-removebg-preview.png'
 
-import "./App.css";
+const App: React.FC = () => {
+  const navbarLogo =logo;
 
-function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
-}
+  const navbarLinks = [
+    { name: 'Home', url: '/' },
+    { name: 'About', url: '/about' },
+    { name: 'Services', url: '/services' },
+    { name: 'Contact', url: '/contact' },
+  ];
+
+  return (
+    <div className="App">
+      <Navbar logo={navbarLogo} links={navbarLinks} />
+      <AllRoutes/>
+    </div>
+  );
+};
 
 export default App;
