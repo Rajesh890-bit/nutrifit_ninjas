@@ -41,6 +41,8 @@ const Navbar = () => {
           <Link to="/signup">
             <li>Signup</li>
           </Link>
+
+          <li className="p-5 ">Logout</li>
         </ul>
         {/* responsive menu*/}
         <ul
@@ -59,6 +61,10 @@ const Navbar = () => {
           </Link>
           <Link to="/diet">
             <li className="p-5">Diet</li>
+          </Link>
+
+          <Link to="/diet">
+            <li className="p-5 ">Logout</li>
           </Link>
         </ul>
       </div>

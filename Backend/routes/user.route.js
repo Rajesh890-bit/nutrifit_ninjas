@@ -38,7 +38,6 @@ userRouter.post("/register", async (req, res) => {
             email,
             gender,
             password: hash,
-
             height,
             weight,
             age,
@@ -47,9 +46,7 @@ userRouter.post("/register", async (req, res) => {
             country,
             issues,
             activity,
-
             avatar,
-            userId,
           });
           await user.save();
           res.status(200).send({ msg: "New User Registered!!", ok: true });
