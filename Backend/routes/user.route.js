@@ -7,7 +7,24 @@ const jwt = require("jsonwebtoken");
 // CREATE USER
 userRouter.post("/register", async (req, res) => {
   try {
-    const { name, email, gender, password, details, avatar } = req.body;
+    const {
+      name,
+      email,
+      gender,
+      password,
+
+      height,
+      weight,
+      age,
+      goal,
+      dob,
+      country,
+      issues,
+      activity,
+
+      avatar,
+      userId,
+    } = req.body;
     const user = await UserModel.findOne({ email });
     if (user) {
       res.status(200).send({ msg: "User Already Registered!!", ok: true });
@@ -21,8 +38,18 @@ userRouter.post("/register", async (req, res) => {
             email,
             gender,
             password: hash,
-            details,
+
+            height,
+            weight,
+            age,
+            goal,
+            dob,
+            country,
+            issues,
+            activity,
+
             avatar,
+            userId,
           });
           await user.save();
           res.status(200).send({ msg: "New User Registered!!", ok: true });
@@ -43,14 +70,12 @@ userRouter.post("/login", async (req, res) => {
       bcrypt.compare(password, user.password).then((result) => {
         if (result) {
           const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY);
-          res
-            .status(200)
-            .send({
-              msg: "Login Successful!",
-              ok: true,
-              userName: user.name,
-              token: token,
-            });
+          res.status(200).send({
+            msg: "Login Successful!",
+            ok: true,
+            userName: user.name,
+            token: token,
+          });
         } else {
           res.status(200).send({ msg: "Wrong Creadentials!", ok: false });
         }
@@ -62,7 +87,5 @@ userRouter.post("/login", async (req, res) => {
     res.status(400).send({ error: error.message });
   }
 });
-
-
 
 module.exports = { userRouter };
