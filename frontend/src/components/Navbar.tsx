@@ -11,7 +11,9 @@ const Navbar = () => {
   return (
     <div className="bg-[#1b2c3b] p-4">
       <div className="max-w-[1240px] py-[16px]  flex items-center justify-between">
-        <div className="text-3xl font-bold">LOGO</div>
+        <Link to="/">
+          <div className="text-3xl font-bold text-white">LOGO</div>{" "}
+        </Link>
         {toggle ? (
           <AiOutlineMenu
             onClick={() => setToggle(!toggle)}
@@ -36,6 +38,12 @@ const Navbar = () => {
           <Link to="/diet">
             <li>Diet</li>
           </Link>
+          <Link to="/login">
+            <li>Login</li>
+          </Link>
+          <Link to="/signup">
+            <li>Signup</li>
+          </Link>
         </ul>
         {/* responsive menu*/}
         <ul
@@ -54,6 +62,12 @@ const Navbar = () => {
           </Link>
           <Link to="/diet">
             <li className="p-5">Diet</li>
+          </Link>
+          <Link to="/login">
+            <li>Login</li>
+          </Link>
+          <Link to="/signup">
+            <li>Signup</li>
           </Link>
         </ul>
       </div>
