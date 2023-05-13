@@ -8,7 +8,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(true);
 
   return (
-    <div className="bg-[#1b2c3b] p-4">
+    <div className="bg-[#1b2c3b] p-4 ">
       <div className="max-w-[1240px] py-[16px]  flex items-center justify-between">
         <div className="text-3xl font-bold">LOGO</div>
         {toggle ? (
