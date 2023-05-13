@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
-import Logo from "../logo/NutriFit_Ninjas-removebg-preview.png";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(true);
@@ -11,9 +10,7 @@ const Navbar = () => {
   return (
     <div className="bg-[#1b2c3b] p-4">
       <div className="max-w-[1240px] py-[16px]  flex items-center justify-between">
-        <Link to="/">
-          <div className="text-3xl font-bold text-white">LOGO</div>{" "}
-        </Link>
+        <div className="text-3xl font-bold">LOGO</div>
         {toggle ? (
           <AiOutlineMenu
             onClick={() => setToggle(!toggle)}
@@ -62,12 +59,6 @@ const Navbar = () => {
           </Link>
           <Link to="/diet">
             <li className="p-5">Diet</li>
-          </Link>
-          <Link to="/login">
-            <li>Login</li>
-          </Link>
-          <Link to="/signup">
-            <li>Signup</li>
           </Link>
         </ul>
       </div>
