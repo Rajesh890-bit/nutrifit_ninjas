@@ -2,10 +2,20 @@
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(true);
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    // Additional logic for logout or redirect
+    alert("You are logged out successfully!!!");
+    navigate("/login");
+  };
 
   return (
     <div className="bg-[#1b2c3b] p-4">
@@ -41,8 +51,16 @@ const Navbar = () => {
           <Link to="/signup">
             <li>Signup</li>
           </Link>
-
-          <li className="p-5 ">Logout</li>
+          {token ? (
+            <li
+              className="hover:text-red-500 hover:bg-gray-200"
+              onClick={handleLogout}
+            >
+              Logout
+            </li>
+          ) : (
+            ""
+          )}
         </ul>
         {/* responsive menu*/}
         <ul
@@ -62,7 +80,6 @@ const Navbar = () => {
           <Link to="/diet">
             <li className="p-5">Diet</li>
           </Link>
-
           <Link to="/diet">
             <li className="p-5 ">Logout</li>
           </Link>
