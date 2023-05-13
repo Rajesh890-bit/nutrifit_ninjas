@@ -11,7 +11,7 @@ exierciesRouter.get("/", async (req, res) => {
       query.calories = calories;
     }
     const exercise = await ExerciseModel.find(query);
-    res.status(200).send({ msg: "All Exercise Data!!", ok: true, exercise: exercise });
+    res.status(200).send(  exercise );
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
