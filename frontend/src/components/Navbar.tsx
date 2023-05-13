@@ -1,57 +1,63 @@
 // Navbar.tsx
-import React from "react";
+import React, { useState } from "react";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+
 import { Link } from "react-router-dom";
-const Navbar: React.FC = () => {
+import Logo from "../logo/NutriFit_Ninjas-removebg-preview.png";
+
+const Navbar = () => {
+  const [toggle, setToggle] = useState(true);
+
   return (
-    <nav className="bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center justify-between">
-            <div className="flex-shrink-0">
-              <Link to="/">
-                <a className="text-white font-bold text-lg">Logo</a>
-              </Link>
-            </div>
-            <div className="hidden ">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link to="/">
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Home
-                  </a>
-                </Link>
-                <Link to={"/exercise"}>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Exercise
-                  </a>
-                </Link>
-                <Link to={"/diet"}>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Diet
-                  </a>
-                </Link>
-                <Link to={"/login"}>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Login
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="bg-[#1b2c3b] p-4">
+      <div className="max-w-[1240px] py-[16px]  flex items-center justify-between">
+        <div className="text-3xl font-bold">LOGO</div>
+        {toggle ? (
+          <AiOutlineMenu
+            onClick={() => setToggle(!toggle)}
+            className="text-white md:hidden block text-2xl"
+          />
+        ) : (
+          <AiOutlineClose
+            onClick={() => setToggle(!toggle)}
+            className="text-white md:hidden block text-2xl"
+          />
+        )}
+        <ul className="hidden md:flex text-white gap-10">
+          <Link to="/">
+            <li>Home</li>
+          </Link>
+          <Link to="/dashboard">
+            <li>Dashboard</li>
+          </Link>
+          <Link to="/exercise">
+            <li>Exercise</li>
+          </Link>
+          <Link to="/diet">
+            <li>Diet</li>
+          </Link>
+        </ul>
+        {/* responsive menu*/}
+        <ul
+          className={`duration-300 md:hidden w-full h-screen  text-white fixed bg-black  top-[92px] ${
+            toggle ? `left-[-100%]` : `left-[0%]`
+          }`}
+        >
+          <Link to="/">
+            <li className="p-5">Home</li>
+          </Link>
+          <Link to="/dashboard">
+            <li className="p-5">Dashboard</li>
+          </Link>
+          <Link to="/exercise">
+            <li className="p-5">Exercise</li>
+          </Link>
+          <Link to="/diet">
+            <li className="p-5">Diet</li>
+          </Link>
+        </ul>
       </div>
-    </nav>
+    </div>
   );
 };
 
