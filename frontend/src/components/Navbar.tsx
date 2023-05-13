@@ -32,9 +32,6 @@ const Navbar = () => {
           <Link to="/exercise">
             <li>Exercise</li>
           </Link>
-          <Link to="/diet">
-            <li>Diet</li>
-          </Link>
           <Link to="/login">
             <li>Login</li>
           </Link>

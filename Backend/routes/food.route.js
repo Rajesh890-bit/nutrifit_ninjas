@@ -14,7 +14,7 @@ foodRouter.get("/", async (req, res) => {
       query.category = category;
     }
     const food = await FoodModel.find(query);
-    res.status(200).send({ msg: "All Food Data!!", ok: true, food: food });
+    res.status(200).send( food);
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
