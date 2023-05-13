@@ -6,13 +6,22 @@ import Exercise from "../pages/Exercise";
 import Diet from "../pages/Diet";
 import LoginPage from "../components/Sigup";
 import Signup from "../components/LoginPage";
+import { AdminPrivateRoute } from "./private.routes";
 
 const Allroutes = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <AdminPrivateRoute>
+              {" "}
+              <Dashboard />
+            </AdminPrivateRoute>
+          }
+        ></Route>
         <Route path="/exercise" element={<Exercise />}></Route>
         <Route path="/diet" element={<Diet />}></Route>
         <Route path="/signup" element={<LoginPage />}></Route>

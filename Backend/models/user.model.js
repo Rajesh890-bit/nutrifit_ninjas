@@ -4,22 +4,19 @@ const userSchema = mongoose.Schema(
   {
     name: { type: String, require: true },
     email: { type: String, require: true },
-    gender: { type: String, enum: ["male", "female"], require: true },
+    gender: { type: String, enum: ["male", "female"] },
     password: { type: String, require: true },
-
     height: { type: Number, require: true },
     weight: { type: Number, require: true },
-    age: { type: Number, require: true },
+    age: { type: Number },
     goal: {
       type: String,
       enum: ["Lose Weight", "Maintain Weight", "Gain Weight"],
-      require: true,
     },
-    dob: { type: String, require: true },
+    dob: { type: String },
     country: {
       type: String,
       enum: ["india", "america", "russia"],
-      require: true,
     },
     issues: {
       type: String,
@@ -30,15 +27,12 @@ const userSchema = mongoose.Schema(
         "Food Cravings",
         "I did no face any barrier",
       ],
-      require: true,
     },
     activity: {
       type: String,
       enum: ["Not Very Active", "Lightly Active", "Very Active"],
-      rquire: true,
     },
-    avatar: { type: String, rquire: true },
-    userId: { type: String, rquire: true },
+    avatar: { type: String },
   },
   { versionKey: false }
 );

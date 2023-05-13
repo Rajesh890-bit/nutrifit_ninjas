@@ -310,7 +310,9 @@
 // };
 // export default FormData;
 
+import axios from "axios";
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface FormModel {
   name: string;
@@ -326,18 +328,16 @@ interface FormModel {
   country: string;
   issues: string;
   activity: string;
-
   avatar: string;
-  userId: string;
 }
 
 const FormData: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormModel>({
     name: "",
     email: "",
     gender: "",
     password: "",
-
     height: 0,
     weight: 0,
     age: 0,
@@ -346,9 +346,7 @@ const FormData: React.FC = () => {
     country: "",
     issues: "",
     activity: "",
-
     avatar: "",
-    userId: "",
   });
 
   const handleChange = (
@@ -363,7 +361,17 @@ const FormData: React.FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    axios({
+      method: "POST",
+      url: `http://localhost:4242/user/register`,
+      data: formData,
+    })
+      .then((res) => {
+        console.log(res);
+        alert("you are sucessfully Signed up");
+        navigate("/dashboard");
+      })
+      .catch((err) => console.error(err));
   };
 
   const {
@@ -371,7 +379,6 @@ const FormData: React.FC = () => {
     email,
     gender,
     password,
-
     height,
     weight,
     age,
@@ -380,9 +387,7 @@ const FormData: React.FC = () => {
     country,
     issues,
     activity,
-
     avatar,
-    userId,
   } = formData;
 
   return (
@@ -621,21 +626,6 @@ const FormData: React.FC = () => {
             name="avatar"
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
             value={avatar}
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* User ID */}
-        <div className="mb-4">
-          <label htmlFor="userId" className="block mb-2 font-medium">
-            User ID
-          </label>
-          <input
-            type="text"
-            id="userId"
-            name="userId"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
-            value={userId}
             onChange={handleChange}
           />
         </div>
