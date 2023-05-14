@@ -1,12 +1,6 @@
-// import { useState } from 'react'
-import image from "./yoga.jpg";
-
-// export default function Home() {
-
-//   return (
-//       <img src={image} className="w-full h-auto" alt="Image" />
-//   )
-// }
+import { useState } from 'react'
+import image from "./yoga.jpg"
+import Footer from '../components/Footer'
 
 import React from "react";
 // import "./styles.css"; // Import the CSS file for styling

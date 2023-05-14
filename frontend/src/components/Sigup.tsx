@@ -313,6 +313,7 @@
 import axios from "axios";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 interface FormModel {
   name: string;
@@ -391,8 +392,9 @@ const FormData: React.FC = () => {
   } = formData;
 
   return (
-    <div>
-      <h3>Sign Up</h3>
+    <>
+    <div className="mb-20">
+      <h3 className="text-center text-lg font-bold">Register</h3>
       <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
         {/* Name */}
         <div className="mb-4">
@@ -639,6 +641,8 @@ const FormData: React.FC = () => {
         </button>
       </form>
     </div>
+    <Footer/>
+    </>
   );
 };
 
