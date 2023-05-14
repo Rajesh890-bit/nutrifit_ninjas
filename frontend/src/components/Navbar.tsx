@@ -19,8 +19,8 @@ const Navbar = () => {
 
   return (
     <div className="bg-[#1b2c3b] p-4 ">
-      <div className="max-w-[1240px] py-[16px]  flex items-center justify-between">
-        <div className="text-3xl font-bold">LOGO</div>
+      <div className="max-w-[1240px] py-[16px]  flex items-center justify-between ">
+        <div className="text-3xl font-bold bg-green-500">nutrifit_ninjas</div>
         {toggle ? (
           <AiOutlineMenu
             onClick={() => setToggle(!toggle)}

@@ -17,7 +17,7 @@ const SigupPage = () => {
     e.preventDefault();
     axios({
       method: "POST",
-      url: `http://localhost:4242/user/login`,
+      url: `https://dark-gold-pelican-sock.cyclic.app/user/login`,
       data: userData,
     })
       .then((res) => {
