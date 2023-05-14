@@ -5,9 +5,10 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <div>
-      <Navbar/>
-      <Allroutes/>
-      {/* <Footer/> */}
+      <nav className="sticky top-0 bg-gray-800 p-4">
+        <Navbar />
+      </nav>
+      <Allroutes />
     </div>
   );
 }

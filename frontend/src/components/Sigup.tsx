@@ -364,7 +364,7 @@ const FormData: React.FC = () => {
     e.preventDefault();
     axios({
       method: "POST",
-      url: `http://localhost:4242/user/register`,
+      url: `https://dark-gold-pelican-sock.cyclic.app/user/register`,
       data: formData,
     })
       .then((res) => {

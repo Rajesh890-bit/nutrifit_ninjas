@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
-import logo from '../logo/NutriFit_Ninjas-removebg-preview.png';
-import ExerciseCard from './ExerciseCard';
-import axios, { AxiosResponse } from 'axios';
-import Footer from '../components/Footer';
+import { useEffect, useState } from "react";
+import logo from "../logo/NutriFit_Ninjas-removebg-preview.png";
+import ExerciseCard from "./ExerciseCard";
+import axios, { AxiosResponse } from "axios";
+import Timer from "../components/Timer";
+
 
 interface Data {
   id: number;
@@ -16,7 +17,9 @@ export default function Exercise() {
 
   const getExercise = async () => {
     try {
-      const response: AxiosResponse<Data[]> = await axios.get<Data[]>(`http://localhost:4242/exercise`);
+      const response: AxiosResponse<Data[]> = await axios.get<Data[]>(
+        `https://dark-gold-pelican-sock.cyclic.app/exercise`
+      );
       console.log(response.data);
       setData(response.data);
     } catch (error) {
@@ -38,17 +41,18 @@ export default function Exercise() {
         <figure className="mt-10">
           <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
             <p>
-              “Regular physical activity can improve your muscle strength and boost your endurance. Exercise delivers oxygen
-              and nutrients to your tissues and helps your cardiovascular system work more efficiently. And when your heart
-              and lung health improve, you have more energy to tackle daily chores.”
+              “Regular physical activity can improve your muscle strength and
+              boost your endurance. Exercise delivers oxygen and nutrients to
+              your tissues and helps your cardiovascular system work more
+              efficiently. And when your heart and lung health improve, you have
+              more energy to tackle daily chores.”
             </p>
           </blockquote>
         </figure>
-         
+
         {data?.map((item: Data, index: number) => (
           <ExerciseCard key={index} {...item} />
         ))}
-        
       </div>
   
     </section>
