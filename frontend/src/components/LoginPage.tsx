@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const SigupPage = () => {
   const [email, setEmail] = useState("");
@@ -131,6 +132,7 @@ const SigupPage = () => {
         </div>
       </section>
       {/* ///Sigup */}
+      <Footer/>
     </>
   );
 };
